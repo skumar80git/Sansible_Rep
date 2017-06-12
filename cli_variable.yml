@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+  - name: to assing variable
+    set_fact: Vname=TestMachine
+  - name: to provide a variable name on command line in Vname
+    debug:
+      msg: '{{ Vname }}'

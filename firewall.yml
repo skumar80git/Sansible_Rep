@@ -1,0 +1,19 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: firewall installation
+    yum:
+      name: firewalld
+      state: present
+  - name: enable firewall servide
+    service:
+     name: firewalld
+     state: started
+     enabled: true
+  - name: allow ssh
+    firewalld:
+     service: ssh
+     state: enabled
+     permanent: true
+     immediate: true
+   

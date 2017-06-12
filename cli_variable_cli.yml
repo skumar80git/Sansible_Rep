@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+  - name: to provide a variable name on command line in Vname
+    debug:
+      msg: '{{ Vname }}'

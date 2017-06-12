@@ -1,0 +1,5 @@
+- hosts: all 
+  tasks:
+  - name: updateing package
+    yum: name="*" state=latest 
+    become: true

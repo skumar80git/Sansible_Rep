@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+  - name: ensure NTP is there to serve
+    yum:
+     name: ntp
+     state: latest
+    become: true
+  - name: nothing
+    file:
+     src: /usr/share/zoneinfo/GMT
+     dest: /etc/localtime
+     state: link
+    become: true
+  - name: service issue
+    service:
+     name: ntpd
+     state: started
+     enabled: true     
+    become: true

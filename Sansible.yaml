@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Ensure Sansible user exists
+    user: name=sansible state=present comment=AnsibleUser
+
+  - name: installing authorized_keys file
+    authorized_key: user=sansible key=https://raw.githubusercontent.com/skumar80git/S80/4d43e253ce351c50ca971944ff99b99045db6ef1/S80.keys state=present
+
+  - name: providing sudo access
+    lineinfile: dest=/etc/sudoers state=present regexp='^sansible ALL\=' line='sansible ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
+

@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: installing python selinux packages
+    yum: name=libselinux-python  state=present
+    become: true
+  - name: installing python selinux packages PART 2
+    yum: name=libsemanage-python  state=present
+    become: true
